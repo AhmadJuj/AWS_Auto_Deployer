@@ -1,0 +1,3 @@
+# This file is deprecated - use main Dockerfile instead
+# The application now runs as a single Next.js container
+# with the deployment service integrated

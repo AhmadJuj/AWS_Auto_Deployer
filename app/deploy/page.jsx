@@ -6,24 +6,24 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 // --- Design Theme Constants for easy modification ---
 const THEME = {
-  // Base Black/White Palette
-  BACKGROUND: "bg-gray-50", // Light background for main content
-  CARD_BG: "bg-white", // White background for cards/sections
-  TEXT_PRIMARY: "text-gray-900", // Near black for main text
-  TEXT_SECONDARY: "text-gray-600", // Gray for descriptive text
-  BORDER_COLOR: "border-gray-200", // Light border for separation
+  // Base Black/Blue Palette
+  BACKGROUND: "bg-black", // Black background for main content
+  CARD_BG: "bg-gray-900", // Dark gray background for cards/sections
+  TEXT_PRIMARY: "text-white", // White for main text
+  TEXT_SECONDARY: "text-gray-300", // Light gray for descriptive text
+  BORDER_COLOR: "border-blue-900", // Dark blue border for separation
 
-  // Accent Colors (subtle grays)
-  ACCENT: "text-gray-700",
-  ACCENT_BG: "bg-gray-100",
-  CODE_BG: "bg-gray-900",
+  // Accent Colors (dark blues)
+  ACCENT: "text-blue-400",
+  ACCENT_BG: "bg-gray-800",
+  CODE_BG: "bg-gray-950",
   CODE_TEXT: "text-gray-200",
 
-  // State Colors (subtle grays or minimal color accent)
-  SUCCESS: { TEXT: "text-green-600", BG: "bg-green-50", BORDER: "border-green-300" },
-  ERROR: { TEXT: "text-red-600", BG: "bg-red-50", BORDER: "border-red-300" },
-  BUTTON_PRIMARY: { BG: "bg-gray-900", HOVER_BG: "bg-gray-700", TEXT: "text-white" },
-  BUTTON_SECONDARY: { BG: "bg-white", HOVER_BG: "bg-gray-100", TEXT: "text-gray-900", BORDER: "border-gray-300" },
+  // State Colors
+  SUCCESS: { TEXT: "text-green-400", BG: "bg-green-950", BORDER: "border-green-700" },
+  ERROR: { TEXT: "text-red-400", BG: "bg-red-950", BORDER: "border-red-700" },
+  BUTTON_PRIMARY: { BG: "bg-blue-700", HOVER_BG: "bg-blue-600", TEXT: "text-white" },
+  BUTTON_SECONDARY: { BG: "bg-gray-800", HOVER_BG: "bg-gray-700", TEXT: "text-white", BORDER: "border-blue-900" },
 };
 
 // Simplified Step Logic for the new design
@@ -321,9 +321,9 @@ API_TIMEOUT=5000`}
             </div>
 
             {/* Progress Bar (Monochromatic but distinct) */}
-            <div className={`w-full ${THEME.ACCENT_BG} rounded-full h-3 mb-8`}>
+            <div className={`w-full bg-gray-800 rounded-full h-3 mb-8`}>
               <div 
-                className="bg-gray-900 h-3 rounded-full transition-all duration-500"
+                className="bg-blue-600 h-3 rounded-full transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -338,27 +338,27 @@ API_TIMEOUT=5000`}
                 let textClass = THEME.TEXT_SECONDARY;
 
                 if (isComplete) {
-                  iconClass = "text-green-600"; // Slight color accent for completion
+                  iconClass = "text-green-400"; // Slight color accent for completion
                   textClass = THEME.TEXT_PRIMARY;
                 } else if (isActive) {
-                  iconClass = "text-gray-900"; // Strong contrast for active step
+                  iconClass = "text-blue-500"; // Strong contrast for active step
                   textClass = THEME.TEXT_PRIMARY;
                 }
 
                 return (
                   <div key={step.key} className="flex items-center gap-4">
-                    <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 ${isComplete ? 'border-green-600' : isActive ? 'border-gray-900' : THEME.BORDER_COLOR}`}>
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 ${isComplete ? 'border-green-600 bg-green-950' : isActive ? 'border-blue-600 bg-blue-950' : 'border-gray-700 bg-gray-800'}`}>
                       {isComplete ? (
-                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       ) : isActive ? (
-                        <svg className="animate-spin h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                       ) : (
-                        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                        <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
                       )}
                     </div>
                     <div className="flex-1">
@@ -374,9 +374,9 @@ API_TIMEOUT=5000`}
 
             {/* Live Logs */}
             {logs.length > 0 && (
-              <div className={`${THEME.CODE_BG} rounded-lg p-4 max-h-64 overflow-y-auto border border-gray-700`}>
+              <div className={`${THEME.CODE_BG} rounded-lg p-4 max-h-64 overflow-y-auto border border-blue-900`}>
                 <div className="text-xs font-mono space-y-1">
-                  <div className="text-gray-500 sticky top-0 bg-gray-900 py-1 mb-1 border-b border-gray-700">**Deployment Logs**</div>
+                  <div className="text-gray-400 sticky top-0 bg-gray-950 py-1 mb-1 border-b border-blue-900">**Deployment Logs**</div>
                   {logs.map((log, index) => (
                     // Highlight error logs in red, success in green
                     <div key={index} className={log.toLowerCase().includes('error') ? 'text-red-400' : log.toLowerCase().includes('success') || log.toLowerCase().includes('complete') ? 'text-green-400' : THEME.CODE_TEXT}>
@@ -391,7 +391,7 @@ API_TIMEOUT=5000`}
 
         {/* Success Result */}
         {deploymentResult && (
-          <div className={`${THEME.CARD_BG} border ${THEME.SUCCESS.BORDER} bg-green-50 rounded-xl p-8 mb-8 shadow-lg`}>
+          <div className={`${THEME.CARD_BG} border ${THEME.SUCCESS.BORDER} ${THEME.SUCCESS.BG} rounded-xl p-8 mb-8 shadow-lg`}>
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-600 rounded-full mb-4 shadow-lg">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -404,7 +404,7 @@ API_TIMEOUT=5000`}
 
             {/* Primary Deployment URL - CloudFront or S3 */}
             {primaryUrl && (
-              <div className={`border ${THEME.SUCCESS.BORDER} ${THEME.CARD_BG} rounded-lg p-6 mb-6 shadow-inner`}>
+              <div className={`border ${THEME.SUCCESS.BORDER} bg-gray-800 rounded-lg p-6 mb-6 shadow-inner`}>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`flex items-center justify-center w-8 h-8 bg-green-600 rounded-full`}>
@@ -416,7 +416,7 @@ API_TIMEOUT=5000`}
                       <div className={`${THEME.TEXT_PRIMARY} font-bold text-lg`}>
                         {deploymentResult.cloudFrontUrl ? '🌐 Live CloudFront URL' : '📦 Deployment URL'}
                       </div>
-                      <div className={`text-green-700 text-sm`}>
+                      <div className={`${THEME.SUCCESS.TEXT} text-sm`}>
                         {deploymentResult.cloudFrontUrl ? 'Global CDN - Fast & Secure (HTTPS)' : 'Your site is live'}
                       </div>
                     </div>
@@ -428,7 +428,7 @@ API_TIMEOUT=5000`}
                     Visit Site
                   </button>
                 </div>
-                <div className={`${THEME.ACCENT_BG} rounded-lg p-3 mb-3 border ${THEME.BORDER_COLOR}`}>
+                <div className={`bg-gray-950 rounded-lg p-3 mb-3 border ${THEME.BORDER_COLOR}`}>
                   <code className={`${THEME.TEXT_PRIMARY} font-mono text-sm break-all`}>{primaryUrl}</code>
                 </div>
                 <div className="flex gap-2">
@@ -478,7 +478,7 @@ API_TIMEOUT=5000`}
 
         {/* Error State */}
         {error && (
-          <div className={`${THEME.CARD_BG} border ${THEME.ERROR.BORDER} bg-red-50 rounded-xl p-8 mb-8 text-center shadow-lg`}>
+          <div className={`${THEME.CARD_BG} border ${THEME.ERROR.BORDER} ${THEME.ERROR.BG} rounded-xl p-8 mb-8 text-center shadow-lg`}>
             <div className="inline-flex items-center justify-center w-16 h-16 bg-red-600 rounded-full mb-4 shadow-lg">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -488,9 +488,9 @@ API_TIMEOUT=5000`}
             <p className={THEME.ERROR.TEXT}>**Error:** {error}</p>
             
             {logs.length > 0 && (
-              <div className={`${THEME.CODE_BG} rounded-lg p-4 mb-6 mt-6 max-h-48 overflow-y-auto text-left border border-gray-700`}>
+              <div className={`${THEME.CODE_BG} rounded-lg p-4 mb-6 mt-6 max-h-48 overflow-y-auto text-left border border-red-900`}>
                 <div className="text-xs font-mono space-y-1">
-                  <div className="text-gray-500 sticky top-0 bg-gray-900 py-1 mb-1 border-b border-gray-700">**Failure Logs**</div>
+                  <div className="text-gray-400 sticky top-0 bg-gray-950 py-1 mb-1 border-b border-red-900">**Failure Logs**</div>
                   {logs.map((log, index) => (
                     <div key={index} className="text-red-400">
                       {log}
@@ -518,14 +518,14 @@ API_TIMEOUT=5000`}
         {!deploying && !deploymentResult && (
           <div className={`${THEME.CARD_BG} border ${THEME.BORDER_COLOR} rounded-xl p-8 mb-8 shadow-md`}>
             <h3 className={`text-2xl font-bold ${THEME.TEXT_PRIMARY} mb-6 border-b ${THEME.BORDER_COLOR} pb-3 flex items-center gap-3`}>
-              <span className={`flex items-center justify-center w-6 h-6 bg-gray-900 text-white text-sm rounded-full`}>?</span>
+              <span className={`flex items-center justify-center w-6 h-6 bg-blue-700 text-white text-sm rounded-full`}>?</span>
               Deployment Workflow
             </h3>
             
             <div className="space-y-6">
               {buildSteps.map((step, index) => (
                 <div key={step.key} className="flex gap-4 items-start">
-                  <div className={`flex-shrink-0 w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center text-white font-bold text-sm`}>
+                  <div className={`flex-shrink-0 w-8 h-8 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm`}>
                     {index + 1}
                   </div>
                   <div className="flex-1">
