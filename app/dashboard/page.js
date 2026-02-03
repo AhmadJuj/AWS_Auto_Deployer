@@ -10,15 +10,15 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-slate-900">TaskFlow</h1>
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900">TaskFlow</h1>
           {session ? (
-            <div className="flex items-center gap-4">
-              <span className="text-slate-600">{session.user.email}</span>
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+              <span className="text-sm text-slate-600 truncate max-w-[200px] sm:max-w-none">{session.user.email}</span>
               <button
                 onClick={() => signOut()}
-                className="px-4 py-2 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition"
+                className="w-full sm:w-auto px-6 py-2 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition text-sm"
               >
                 Sign Out
               </button>
@@ -26,7 +26,7 @@ export default function HomePage() {
           ) : (
             <button
               onClick={() => signIn("github")}
-              className="px-4 py-2 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition"
+              className="w-full sm:w-auto px-6 py-2 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition text-sm"
             >
               Sign In
             </button>
@@ -35,21 +35,21 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 py-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
         <div className="text-center max-w-4xl mx-auto">
           {/* Headline */}
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 px-4">
             Manage Your Tasks Like Never Before
           </h2>
 
           {/* Subheadline */}
-          <p className="text-xl text-slate-600 mb-10">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-8 sm:mb-10 px-4">
             A powerful task management platform built for teams. Collaborate,
             organize, and achieve your goals efficiently.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center px-4">
             {session ? (
               <>
                 <button 
@@ -82,21 +82,21 @@ export default function HomePage() {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mt-20">
-          <div className="p-8 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
-            <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 md:mt-20">
+          <div className="p-6 sm:p-8 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">⚡</div>
+            <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2 sm:mb-3">
               Lightning Fast
             </h3>
-            <p className="text-slate-600">
+            <p className="text-sm sm:text-base text-slate-600">
               Built with Next.js for blazing fast performance and seamless
               experience.
             </p>
           </div>
 
-          <div className="p-8 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
-            <div className="text-4xl mb-4">🔒</div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+          <div className="p-6 sm:p-8 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🔒</div>
+            <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2 sm:mb-3">
               Secure Auth
             </h3>
             <p className="text-slate-600">

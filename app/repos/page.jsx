@@ -55,32 +55,32 @@ export default function ReposPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-10 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => router.push('/dashboard')}
-              className="text-slate-600 hover:text-slate-900 transition"
+              className="text-slate-600 hover:text-slate-900 transition p-1"
               title="Back to Dashboard"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
-            <h1 className="text-xl font-semibold text-slate-900">Your Repositories</h1>
-            <span className="text-sm text-slate-600 bg-slate-100 px-2 py-1 rounded">
+            <h1 className="text-lg sm:text-xl font-semibold text-slate-900">Your Repositories</h1>
+            <span className="text-xs sm:text-sm text-slate-600 bg-slate-100 px-2 py-1 rounded">
               {repos.length}
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
             {session?.user?.email && (
-              <span className="text-sm text-slate-600 hidden sm:block">
+              <span className="text-xs sm:text-sm text-slate-600 hidden md:block truncate max-w-[150px] lg:max-w-none">
                 {session.user.email}
               </span>
             )}
             <button
               onClick={() => signOut()}
-              className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 transition text-sm text-white"
+              className="w-full sm:w-auto px-4 sm:px-6 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 transition text-sm text-white font-medium"
             >
               Sign out
             </button>
@@ -89,7 +89,7 @@ export default function ReposPage() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {error ? (
           <div className="text-center py-20">
             <p className="text-red-600">Error: {error}</p>
@@ -99,31 +99,31 @@ export default function ReposPage() {
             <p className="text-slate-500">No repositories found</p>
           </div>
         ) : (
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:gap-4">
             {repos.map((repo) => (
               <div
                 key={repo.id}
-                className="border border-slate-200 rounded-lg p-5 bg-white hover:shadow-md transition group"
+                className="border border-slate-200 rounded-lg p-4 sm:p-5 bg-white hover:shadow-md transition group"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+                  <div className="flex-1 min-w-0 w-full">
                     <a
                       href={repo.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg font-medium text-blue-600 hover:text-blue-700 transition inline-flex items-center gap-2"
+                      className="text-base sm:text-lg font-medium text-blue-600 hover:text-blue-700 transition inline-flex items-center gap-2 break-words"
                     >
                       {repo.name}
-                      <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
                     {repo.description && (
-                      <p className="text-slate-600 text-sm mt-2 line-clamp-2">
+                      <p className="text-slate-600 text-xs sm:text-sm mt-2 line-clamp-2">
                         {repo.description}
                       </p>
                     )}
-                    <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-500">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 text-xs text-slate-500">
                       {repo.language && (
                         <span className="flex items-center gap-1">
                           <span className="w-3 h-3 rounded-full bg-blue-500"></span>
@@ -149,7 +149,7 @@ export default function ReposPage() {
                   </div>
                   <button
                     onClick={() => handleDeployClick(repo)}
-                    className="px-4 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition flex-shrink-0"
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition flex-shrink-0 touch-manipulation"
                   >
                     Deploy
                   </button>

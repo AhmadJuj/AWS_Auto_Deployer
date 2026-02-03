@@ -159,13 +159,13 @@ function DeployContent() {
 
   return (
     <div className={`min-h-screen ${THEME.ACCENT_BG}`}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         
         {/* Header with Navigation */}
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center mb-6 sm:mb-8 lg:mb-10 gap-3">
           <button
             onClick={() => router.push('/repos')}
-            className={`px-4 py-2 ${THEME.BUTTON_SECONDARY.BG} hover:${THEME.BUTTON_SECONDARY.HOVER_BG} ${THEME.BUTTON_SECONDARY.TEXT} rounded-lg transition border ${THEME.BUTTON_SECONDARY.BORDER} flex items-center gap-2 text-sm shadow-sm`}
+            className={`px-4 py-2.5 ${THEME.BUTTON_SECONDARY.BG} hover:${THEME.BUTTON_SECONDARY.HOVER_BG} ${THEME.BUTTON_SECONDARY.TEXT} rounded-lg transition border ${THEME.BUTTON_SECONDARY.BORDER} flex items-center justify-center gap-2 text-sm shadow-sm touch-manipulation`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -174,39 +174,39 @@ function DeployContent() {
           </button>
           <button
             onClick={() => signOut()}
-            className={`px-4 py-2 ${THEME.BUTTON_SECONDARY.BG} hover:${THEME.BUTTON_SECONDARY.HOVER_BG} ${THEME.BUTTON_SECONDARY.TEXT} rounded-lg transition border ${THEME.BUTTON_SECONDARY.BORDER} text-sm shadow-sm`}
+            className={`px-4 py-2.5 ${THEME.BUTTON_SECONDARY.BG} hover:${THEME.BUTTON_SECONDARY.HOVER_BG} ${THEME.BUTTON_SECONDARY.TEXT} rounded-lg transition border ${THEME.BUTTON_SECONDARY.BORDER} text-sm shadow-sm touch-manipulation`}
           >
             Sign out
           </button>
         </div>
         
         {/* Page Title */}
-        <div className="text-center mb-12">
-          <h1 className={`text-4xl sm:text-5xl font-extrabold ${THEME.TEXT_PRIMARY} mb-2`}>
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12 px-4">
+          <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold ${THEME.TEXT_PRIMARY} mb-2`}>
             Deploy Repository
           </h1>
-          <p className={`text-lg ${THEME.TEXT_SECONDARY}`}>
+          <p className={`text-base sm:text-lg ${THEME.TEXT_SECONDARY}`}>
             Build and deploy to a global CloudFront CDN
           </p>
         </div>
 
         {/* Repository Card */}
-        <div className={`${THEME.CARD_BG} border ${THEME.BORDER_COLOR} rounded-xl p-6 mb-8 shadow-md`}>
-          <div className="flex items-start gap-5">
-            <div className="flex-shrink-0">
+        <div className={`${THEME.CARD_BG} border ${THEME.BORDER_COLOR} rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 shadow-md`}>
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+            <div className="flex-shrink-0 hidden sm:block">
               {/* GitHub Icon */}
-              <svg className={`w-12 h-12 ${THEME.ACCENT}`} fill="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-10 h-10 sm:w-12 sm:h-12 ${THEME.ACCENT}`} fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
             </div>
-            <div className="flex-1 min-w-0">
-              <h2 className={`text-2xl font-bold ${THEME.TEXT_PRIMARY} mb-1`}>{repoName}</h2>
-              <div className={`${THEME.CODE_BG} rounded-lg p-3 mb-2`}>
-                <code className={`${THEME.CODE_TEXT} text-sm break-all`}>{repoUrl}</code>
+            <div className="flex-1 min-w-0 w-full">
+              <h2 className={`text-xl sm:text-2xl font-bold ${THEME.TEXT_PRIMARY} mb-2 break-words`}>{repoName}</h2>
+              <div className={`${THEME.CODE_BG} rounded-lg p-2 sm:p-3 mb-2`}>
+                <code className={`${THEME.CODE_TEXT} text-xs sm:text-sm break-all`}>{repoUrl}</code>
               </div>
               <button
                 onClick={() => handleCopy(repoUrl)}
-                className={`text-xs px-3 py-1.5 ${THEME.ACCENT_BG} ${THEME.ACCENT} rounded-lg hover:bg-gray-200 transition`}
+                className={`text-xs px-3 py-1.5 ${THEME.ACCENT_BG} ${THEME.ACCENT} rounded-lg hover:bg-gray-200 transition touch-manipulation`}
               >
                 {copied ? '✓ Copied URL' : '📋 Copy Repository URL'}
               </button>
@@ -289,18 +289,18 @@ API_TIMEOUT=5000`}
 
         {/* Main Deploy Button (Initial State) */}
         {!deploying && !deploymentResult && !error && (
-          <div className={`${THEME.CARD_BG} border ${THEME.BORDER_COLOR} rounded-xl p-8 mb-8 text-center shadow-lg`}>
-            <h3 className={`text-3xl font-bold ${THEME.TEXT_PRIMARY} mb-3`}>
+          <div className={`${THEME.CARD_BG} border ${THEME.BORDER_COLOR} rounded-xl p-6 sm:p-8 mb-6 sm:mb-8 text-center shadow-lg`}>
+            <h3 className={`text-2xl sm:text-3xl font-bold ${THEME.TEXT_PRIMARY} mb-2 sm:mb-3`}>
               Ready to Deploy?
             </h3>
-            <p className={`${THEME.TEXT_SECONDARY} mb-8 text-lg`}>
+            <p className={`${THEME.TEXT_SECONDARY} mb-6 sm:mb-8 text-base sm:text-lg px-4`}>
               Initiate the build and deployment process to a high-speed CloudFront CDN.
             </p>
             
             <button
               onClick={handleDeploy}
               disabled={!repoUrl}
-              className={`inline-flex items-center gap-3 px-10 py-4 ${THEME.BUTTON_PRIMARY.BG} ${THEME.BUTTON_PRIMARY.TEXT} font-bold text-xl rounded-lg hover:${THEME.BUTTON_PRIMARY.HOVER_BG} transition-all transform hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3 sm:py-4 ${THEME.BUTTON_PRIMARY.BG} ${THEME.BUTTON_PRIMARY.TEXT} font-bold text-lg sm:text-xl rounded-lg hover:${THEME.BUTTON_PRIMARY.HOVER_BG} transition-all transform hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
@@ -443,22 +443,22 @@ API_TIMEOUT=5000`}
             )}
 
             {/* Deployment Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              <div className={`${THEME.ACCENT_BG} rounded-lg p-4 border ${THEME.BORDER_COLOR}`}>
-                <div className={`text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Deployment ID</div>
-                <code className={`${THEME.TEXT_PRIMARY} font-mono text-sm`}>{deploymentResult.deploymentId}</code>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+              <div className={`${THEME.ACCENT_BG} rounded-lg p-3 sm:p-4 border ${THEME.BORDER_COLOR}`}>
+                <div className={`text-xs sm:text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Deployment ID</div>
+                <code className={`${THEME.TEXT_PRIMARY} font-mono text-xs sm:text-sm break-all`}>{deploymentResult.deploymentId}</code>
               </div>
-              <div className={`${THEME.ACCENT_BG} rounded-lg p-4 border ${THEME.BORDER_COLOR}`}>
-                <div className={`text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Files Deployed</div>
-                <div className={`${THEME.TEXT_PRIMARY} font-semibold`}>{deploymentResult.uploadedCount} files</div>
+              <div className={`${THEME.ACCENT_BG} rounded-lg p-3 sm:p-4 border ${THEME.BORDER_COLOR}`}>
+                <div className={`text-xs sm:text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Files Deployed</div>
+                <div className={`${THEME.TEXT_PRIMARY} font-semibold text-sm sm:text-base`}>{deploymentResult.uploadedCount} files</div>
               </div>
-              <div className={`${THEME.ACCENT_BG} rounded-lg p-4 border ${THEME.BORDER_COLOR}`}>
-                <div className={`text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>S3 Bucket</div>
-                <code className={`${THEME.TEXT_PRIMARY} font-mono text-sm`}>{deploymentResult.bucket}</code>
+              <div className={`${THEME.ACCENT_BG} rounded-lg p-3 sm:p-4 border ${THEME.BORDER_COLOR}`}>
+                <div className={`text-xs sm:text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>S3 Bucket</div>
+                <code className={`${THEME.TEXT_PRIMARY} font-mono text-xs sm:text-sm break-all`}>{deploymentResult.bucket}</code>
               </div>
-              <div className={`${THEME.ACCENT_BG} rounded-lg p-4 border ${THEME.BORDER_COLOR}`}>
-                <div className={`text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Repository</div>
-                <div className={`${THEME.TEXT_PRIMARY} font-semibold`}>{deploymentResult.repoName}</div>
+              <div className={`${THEME.ACCENT_BG} rounded-lg p-3 sm:p-4 border ${THEME.BORDER_COLOR}`}>
+                <div className={`text-xs sm:text-sm mb-1 ${THEME.TEXT_SECONDARY}`}>Repository</div>
+                <div className={`${THEME.TEXT_PRIMARY} font-semibold text-sm sm:text-base truncate`}>{deploymentResult.repoName}</div>
               </div>
             </div>
             
@@ -542,32 +542,16 @@ API_TIMEOUT=5000`}
 
         {/* Info Box */}
         <div className={`${THEME.ACCENT_BG} border ${THEME.BORDER_COLOR} rounded-xl p-6`}>
-          <h3 className={`${THEME.TEXT_PRIMARY} font-semibold mb-3 border-b ${THEME.BORDER_COLOR} pb-2 flex items-center gap-2`}>
-            <span>💡</span>
+          <h3 className={`${THEME.TEXT_PRIMARY} font-semibold mb-3 border-b ${THEME.BORDER_COLOR} pb-2`}>
             About CloudFront CDN
           </h3>
           <p className={`${THEME.TEXT_SECONDARY} text-sm mb-3`}>
-            Your application is served from **AWS CloudFront**, a robust Content Delivery Network that ensures your site loads fast globally.
+            Your application is served from AWS CloudFront, a robust Content Delivery Network that ensures your site loads fast globally.
           </p>
           <ul className={`${THEME.TEXT_PRIMARY} text-sm space-y-2`}>
-            <li className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>**HTTPS encryption** by default for security.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>**Fast loading** from edge locations worldwide.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>**Automatic caching** for optimal performance and scale.</span>
-            </li>
+            <li>HTTPS encryption by default for security.</li>
+            <li>Fast loading from edge locations worldwide.</li>
+            <li>Automatic caching for optimal performance and scale.</li>
           </ul>
         </div>
       </div>
