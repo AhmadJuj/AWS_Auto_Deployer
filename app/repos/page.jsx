@@ -44,10 +44,10 @@ export default function ReposPage() {
     router.push(`/deploy?repo=${encodeURIComponent(repo.full_name)}&url=${encodeURIComponent(repo.clone_url)}`);
   };
 
-  if (loading) {
+  if (loading || status === "loading") {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-gray-300">Loading your repositories...</div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
