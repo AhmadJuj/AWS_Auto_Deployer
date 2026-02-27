@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Redis for BullMQ job queue
+  redis:
+    image: redis:7-alpine
+    container_name: mern-deployer-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  # MERN Deployer - All-in-One Container
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mern-deployer
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - deployment-data:/app/dist
+      - temp-data:/app/temp
+    restart: unless-stopped
+    depends_on:
+      - redis
+
+volumes:
+  deployment-data:
+  temp-data:
+  redis-data:
