@@ -59,6 +59,7 @@ export default function HomePage() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center px-4">
             {session ? (
+              
               <>
                 <button 
                   onClick={() => router.push("/repos")}
